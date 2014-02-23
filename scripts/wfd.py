@@ -27,14 +27,14 @@ def peer_mac_get() :
 def wpa_supplicant_start() : 
     print 'wpa_supplicant_start:'
     subprocess.call(["./wpa_supplicant", "-i", "wlan0", "-c", "./wpa_0_8.conf", "-B"])
-    time.sleep(1)
+    #time.sleep(1)
 
 def wps_auth() : 
     print 'wps_auth:'
     rsp = subprocess.Popen(["./hostapd_cli", "wps_pbc", "any"], shell=False, stdout=subprocess.PIPE)
     output = rsp.stdout.read(); 
     print output
-    time.sleep(1)
+    #time.sleep(1)
 
 def wps_status_get() : 
     print 'wps_satus_get:'
@@ -63,7 +63,7 @@ def p2p_set_nego(mac) :
     while True : 
 
         # Wait for result. 
-        time.sleep(0.5)
+        #time.sleep(0.5)
 
         # Poll status.
         peer_status = p2p_status_get()
@@ -101,7 +101,7 @@ def p2p_enable() :
     subprocess.call(["iwpriv", "wlan0", "p2p_set", "op_ch=9"])
 
     # Sleep for 50ms
-    time.sleep(0.05)
+    #time.sleep(0.05)
 
     # Set ssid
     subprocess.call(["iwpriv", "wlan0", "p2p_set", "ssid=DIRECT-RT"])
@@ -174,8 +174,8 @@ def p2p_opch_get() :
 def wait_forever() : 
 
     while True : 
-
-        time.sleep(1)
+	pass
+        #time.sleep(1)
 
 def p2p_go_mode_set() : 
 
@@ -188,7 +188,7 @@ def p2p_go_mode_set() :
     do_wps(); 
 
     # Wait for host apd interval
-    time.sleep(1)
+    #time.sleep(1)
 
     while True : 
 
@@ -198,7 +198,7 @@ def p2p_go_mode_set() :
             print 'Wireless display negotiation completed!'
             break; 
 
-        time.sleep(1)
+        #time.sleep(1)
 
 def do_wps() : 
 
@@ -216,7 +216,7 @@ def do_wps() :
             print 'wps passed!' 
             break; 
 
-        time.sleep(1)
+        #time.sleep(1)
 
 def read_all_sta() : 
 
@@ -317,7 +317,7 @@ def wfd_connection_wait() :
                 
                 break
     
-        time.sleep(1)
+        #time.sleep(1)
         
     print 'Getting peer device address...'
     
